@@ -73,6 +73,9 @@ titanic.dropna(subset=['embarked'], inplace=True)
 titanic['age_group'] = pd.cut(titanic['age'], bins=[0, 12, 18, 35, 60, 90], labels=['Child', 'Teen', 'Young Adult', 'Adult', 'Senior'])
 print (titanic[['age', 'age_group']].head())
 
+# save cleaned data to new csv file
+titanic.to_csv('cleaned_titanic.csv', index=False)
+
 # barchrt for survival rate by age group
 import matplotlib.pyplot as plt
 age_group_survival = titanic.groupby('age_group')['survived'].mean()
